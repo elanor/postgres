@@ -1,14 +1,17 @@
+const cors = require('cors');
 const express = require('express');
 const app = express();
-const cors = require('cors');
 
-app.use(cors()); // Это позволяет запросы со всех доменов. Для продакшена лучше настроить более строго.
+app.use(cors(
+  {origin: 'http://localhost:3000'} // Разрешите только этот домен
+)); 
+
 
 app.use(express.json()); // Для парсинга JSON тел запросов
 
 const pool = require('./db');
 
-
+console.log('indexjs file launched!')
 // Получение всех животных
 app.get('/animals', async (req, res) => {
     try {

@@ -2,10 +2,11 @@ import React, { useState, useEffect } from 'react';
 
 function Animals() {
   const [animals, setAnimals] = useState([]); // Состояние для хранения данных о животных
+  console.log('something works!')
 
   useEffect(() => {
     // Получаем данные о животных при загрузке компонента
-    fetch('http://localhost:5000/animals') // Обращаемся к маршруту /animals на сервере
+    fetch('/animals') // Обращаемся к маршруту /animals на сервере
       .then(response => response.json())
       .then(data => setAnimals(data)) // Обновляем состояние animals данными, полученными с сервера
       .catch(error => console.error("Ошибка при получении данных о животных:", error));
